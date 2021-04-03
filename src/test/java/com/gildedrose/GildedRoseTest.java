@@ -11,8 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class GildedRoseTest {
 
     private GildedRose gildedRose;
-
-
+    
     //naming strategy: UnitOfWork_StateUnderTest_ExpectedBehavior
     @Test
     void updateQuality_SulfurasQuality_ConstantQuality(){
