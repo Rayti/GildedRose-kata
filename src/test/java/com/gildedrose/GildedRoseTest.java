@@ -5,16 +5,15 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 class GildedRoseTest {
 
     private GildedRose gildedRose;
-    
+
     //naming strategy: UnitOfWork_StateUnderTest_ExpectedBehavior
     @Test
-    void updateQuality_SulfurasQuality_ConstantQuality(){
+    void updateQualitySulfurasQualityConstantQuality(){
         String sulfurasName = "Sulfuras, Hand of Ragnaros";
         int quality = 80;
         Item [] items = new Item[] {new Item(sulfurasName, -5, quality),
@@ -28,7 +27,7 @@ class GildedRoseTest {
     }
 
     @Test
-    void updateQuality_ConjuredSulfurasQuality_ConstantQuality(){
+    void updateQualityConjuredSulfurasQualityConstantQuality(){
         String sulfurasName = "Conjured Sulfuras, Hand of Ragnaros";
         int quality = 80;
         Item [] items = new Item[] {new Item(sulfurasName, -5, quality),
@@ -42,7 +41,7 @@ class GildedRoseTest {
     }
 
     @Test
-    void updateQuality_SulfurasSellIn_ConstantSellIn(){
+    void updateQualitySulfurasSellInConstantSellIn(){
         String sulfurasName = "Sulfuras, Hand of Ragnaros";
         int quality = 80;
         Item [] items = new Item[] {new Item(sulfurasName, -5, quality),
@@ -56,7 +55,7 @@ class GildedRoseTest {
     }
 
     @Test
-    void updateQuality_DefaultItemQualityLowerBoundary_DoesNotExceedBoundaryLimit(){
+    void updateQualityDefaultItemQualityLowerBoundaryDoesNotExceedBoundaryLimit(){
         Item [] items = new Item[] {new Item("common item", 10, 10),
                 new Item("common item 2", 10, 0), new Item("common item 3", 0,  10),
                 new Item("common item 4", 0, 0), new Item("common item 5", -5, 10),
@@ -71,7 +70,7 @@ class GildedRoseTest {
     }
 
     @Test
-    void updateQuality_DefaultItemQualityUpperBoundary_DoesNotExceedBoundaryLimit(){
+    void updateQualityDefaultItemQualityUpperBoundaryDoesNotExceedBoundaryLimit(){
         Item [] items = new Item[] {new Item("common item", 10, 51),
                 new Item("common item 2", 10, 50), new Item("common item 3", 0,  10),
                 new Item("common item 4", 0, 49), new Item("common item 5", -5, 10),
@@ -86,7 +85,7 @@ class GildedRoseTest {
     }
 
     @Test
-    void updateQuality_DefaultItemQualityChange_QualityDecreased(){
+    void updateQualityDefaultItemQualityChangeQualityDecreased(){
         Item [] items = new Item[] {new Item("common item", 10, 10),
                 new Item("common item 2", 0, 10), new Item("common item 3", -5,  10)};
         gildedRose = new GildedRose(items);
@@ -97,7 +96,7 @@ class GildedRoseTest {
     }
 
     @Test
-    void updateQuality_ConjuredDefaultItemQualityChange_QualityDecreased(){
+    void updateQualityConjuredDefaultItemQualityChangeQualityDecreased(){
         Item [] items = new Item[] {new Item("Conjured common item", 10, 10),
                 new Item("Conjured common item 2", 0, 10), new Item("Conjured common item 3", -5,  10)};
         gildedRose = new GildedRose(items);
@@ -108,7 +107,7 @@ class GildedRoseTest {
     }
 
     @Test
-    void updateQuality_AgedBrieSellIn_SellInDecreased(){
+    void updateQualityAgedBrieSellInSellInDecreased(){
         String name= "Aged Brie";
         Item[] items = new Item[] {new Item(name, 10, 10), new Item(name, 0, 10),
             new Item(name, -5, 10)};
@@ -120,7 +119,7 @@ class GildedRoseTest {
     }
 
     @Test
-    void updateQuality_AgedBrieQuality_QualityIncreased() {
+    void updateQualityAgedBrieQualityQualityIncreased() {
         String name = "Aged Brie";
         Item[] items = new Item [] {new Item(name, 10, 10),
             new Item(name, 0, 10), new Item(name, -5, 10)};
@@ -132,7 +131,7 @@ class GildedRoseTest {
     }
 
     @Test
-    void updateQuality_ConjuredAgedBrieQuality_QualityIncreased(){
+    void updateQualityConjuredAgedBrieQualityQualityIncreased(){
         String name = "Conjured Aged Brie";
         Item[] items = new Item [] {new Item(name, 10, 10),
                 new Item(name, 0, 10), new Item(name, -5, 10)};
@@ -144,7 +143,7 @@ class GildedRoseTest {
     }
 
     @Test
-    void updateQuality_BackstagePassesSellIn_SellInDecreased(){
+    void updateQualityBackstagePassesSellInSellInDecreased(){
         String name = "Backstage passes";
         Item[] items = new Item[] {new Item(name, 10, 10), new Item(name, 0, 10),
                 new Item(name, -5, 10)};
@@ -156,7 +155,7 @@ class GildedRoseTest {
     }
 
     @Test
-    void updateQuality_BackstagePassesQuality_QualityDependingOnSellIn(){
+    void updateQualityBackstagePassesQualityQualityDependingOnSellIn(){
         String name = "Backstage passes to a TAFKAL80ETC concert";
         Item[] items = new Item[] {new Item(name, 20, 10), new Item(name, 10, 10),
                 new Item(name, 7, 10), new Item(name, 5, 10), new Item(name, 2, 10),
@@ -173,7 +172,7 @@ class GildedRoseTest {
     }
 
     @Test
-    void updateQuality_ConjuredBackstagePassesQuality_QualityDependingOnSellIn(){
+    void updateQualityConjuredBackstagePassesQualityQualityDependingOnSellIn(){
         String name = "Conjured Backstage passes to a TAFKAL80ETC concert";
         Item[] items = new Item[] {new Item(name, 20, 10), new Item(name, 10, 10),
                 new Item(name, 7, 10), new Item(name, 5, 10), new Item(name, 2, 10),
@@ -187,5 +186,24 @@ class GildedRoseTest {
         assertEquals(gildedRose.items[4].quality, 16);
         assertEquals(gildedRose.items[5].quality, 0);
         assertEquals(gildedRose.items[6].quality, 0);
+    }
+
+    @Test
+    void updateQualityEmptyListOfItemsListRemainsEmpty(){
+        gildedRose = new GildedRose(new Item[0]);
+        gildedRose.updateQuality();
+        assertEquals(gildedRose.items.length, 0);
+    }
+
+    @Test
+    void updateQualityNullListOfItemsThrowNullPointerException(){
+        gildedRose = new GildedRose(null);
+        assertThrows(NullPointerException.class, () -> gildedRose.updateQuality());
+    }
+
+    @Test
+    void updateQualityNullItemNameThrowNullPointerException(){
+        gildedRose = new GildedRose(new Item[]{new Item(null, 5, 5)});
+        assertThrows(NullPointerException.class, () -> gildedRose.updateQuality());
     }
 }

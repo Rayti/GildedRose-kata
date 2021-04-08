@@ -1,8 +1,5 @@
 package com.gildedrose;
 
-import java.util.Arrays;
-import java.util.Optional;
-
 class GildedRose {
     Item[] items;
 
@@ -10,18 +7,18 @@ class GildedRose {
         this.items = items;
     }
 
-    private SpecialItem selectSpecialItem(Item item){
-        for(SpecialItem specialItem : SpecialItem.values()){
-            if(specialItem.isSpecial() && item.name.contains(specialItem.getName())){
-                return specialItem;
+    private ItemType selectSpecialItem(Item item){
+        for(ItemType itemType : ItemType.values()){
+            if(itemType.isSpecial() && item.name.contains(itemType.getName())){
+                return itemType;
             }
         }
-        return SpecialItem.COMMON_ITEM;
+        return ItemType.COMMON_ITEM;
     }
 
     public void updateQuality() {
         for(Item item : items){
-            selectSpecialItem(item).updateQuality(item);
+            selectSpecialItem(item).getItemQualityContext().updateQuality(item);
         }
     }
 }
